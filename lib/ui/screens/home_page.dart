@@ -1,4 +1,6 @@
+import 'package:bloc_example/bloc/counter/counter_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -10,19 +12,24 @@ class HomePage extends StatelessWidget {
        centerTitle: true, 
        title: const Text('Bloc Counter'),
       ),
-      body:const Center(
+      body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              "",
-              style: TextStyle(
-                fontSize: 50, 
-                fontWeight: FontWeight.bold,
-              ),
-              ),
-             SizedBox(height: 5),
-             Text('Click the + - to see magic')  
+            BlocBuilder<CounterBloc, int>(
+              builder: (context, state) {
+                return Text(
+                "$state",
+                style: const TextStyle(
+                  fontSize: 50, 
+                  fontWeight: FontWeight.bold,
+                ),
+                );
+              },
+               
+            ),
+             const SizedBox(height: 5),
+             const Text('Click the + - to see magic')  
           ],
         ),
       ),
