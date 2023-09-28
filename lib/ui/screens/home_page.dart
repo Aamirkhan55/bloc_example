@@ -1,4 +1,5 @@
 import 'package:bloc_example/bloc/counter/counter_bloc.dart';
+import 'package:bloc_example/bloc/counter/counter_event.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -37,12 +38,16 @@ class HomePage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           FloatingActionButton(
-            onPressed: () {},
+            onPressed: () {
+              BlocProvider.of<CounterBloc>(context).add(DecrementCounterEvents());
+            },
             child: const Icon(Icons.remove),
             ),
           const SizedBox(height: 10),
           FloatingActionButton(
-            onPressed: () {},
+            onPressed: () {
+              BlocProvider.of<CounterBloc>(context).add(IncrementCounterEvents());
+            },
             child: const Icon(Icons.add),
             )
         ],
